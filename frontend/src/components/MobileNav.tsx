@@ -10,7 +10,7 @@ export default function MobileNav() {
         <Menu className=" text-orange-500" />
       </SheetTrigger>
       <SheetContent className=" space-y-3">
-        <SheetTitle>Wellcome to MernEats.com</SheetTitle>
+        <SheetTitle>Wellcome to VegetarianFood.com</SheetTitle>
         <Separator />
         <SheetDescription className="flex">
           <Button className=" font-bold bg-orange-500 flex-1 ">Log In</Button>
