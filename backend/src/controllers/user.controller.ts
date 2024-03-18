@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import User from "../models/user.model";
 
-export const createUser = async (req: Request, res: Response, next: NextFunction) => {
+const createCurrentUser = async (req: Request, res: Response, next: NextFunction) => {
   //check if user  have been exist
   //If user is not exist then create new user
   //Return a user object to calling the client
@@ -20,4 +20,30 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
     console.log(error);
     return res.status(500).json({ message: "Error create user" });
   }
+};
+
+const updateCurrentUser = async (req: Request, res: Response) => {
+  try {
+    const { name, addressLine1, country, city } = req.body;
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.name = name;
+    user.addressLine1 = addressLine1;
+    user.city = city;
+    user.country = country;
+
+    await user.save();
+    return res.send(user);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ messase: "error updating user" });
+  }
+};
+
+export default {
+  createCurrentUser,
+  updateCurrentUser,
 };
