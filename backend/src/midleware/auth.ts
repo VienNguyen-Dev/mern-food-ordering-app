@@ -23,10 +23,10 @@ export const jwtParse = async (req: Request, res: Response, next: NextFunction) 
   if (!authorization || !authorization.startsWith("Bearer ")) {
     return res.sendStatus(401);
   }
-  const token = authorization.split("")[1];
+  const token = authorization.split(" ")[1];
   try {
     const decoded = (await jwt.decode(token)) as jwt.JwtPayload;
-    const auth0Id = decoded.sub;
+    const auth0Id = decoded?.sub;
     const user = await User.findOne({ auth0Id });
     if (!user) {
       return res.sendStatus(401);
