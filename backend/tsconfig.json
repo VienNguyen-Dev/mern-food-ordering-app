@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    
+    "outDir": "./dist", //"dist" thường là viết tắt của "distribution" (phân phối) và thường được sử dụng để chỉ thư mục hoặc thư mục con chứa phiên bản đã được biên dịch hoặc được tối ưu hóa của mã nguồn.
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
